@@ -2,23 +2,7 @@ from libqtile.config import Group, ScratchPad, DropDown
 from libqtile.core.manager import Qtile
 from typing import Callable
 
-group_names_main = "1234"
-group_names_second = "90"
-
-def go_to_group(name: str) -> Callable:
-    def _inner(qtile: Qtile) -> None:
-        if len(qtile.screens) == 1:
-            qtile.groups_map[name].cmd_toscreen()
-            return
-        if name in group_names_second:
-            qtile.focus_screen(0)
-            qtile.groups_map[name].cmd_toscreen()
-        else:
-            qtile.focus_screen(1)
-            qtile.groups_map[name].cmd_toscreen()
-    return _inner
-
-groups = [Group(i) for i in group_names_main + group_names_second]
+groups = [Group(i) for i in "12345678"]
 
 from bindings import mod, keys
 from libqtile.config import Key
